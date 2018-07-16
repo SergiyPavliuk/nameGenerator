@@ -23,10 +23,10 @@ function loadNames(e) {
         url += `amount=${amount}&`;
     }
     fetch(url)
-        .then(function (response) {
+        .then(response => {
             return response.json();
         })
-        .then(function (names) {
+        .then(names => {
             let html = '';
             html = '<h2>Згенеровані імена:</h2>';
             html += '<ul class="list">';
@@ -38,7 +38,7 @@ function loadNames(e) {
             html += '</ul>';
             document.getElementById('result').innerHTML = html;
         })
-        .catch(function (error) {
+        .catch(error => {
             console.log(error);
         })
 }
