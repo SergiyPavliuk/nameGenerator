@@ -36,5 +36,5 @@ function loadNames(e) {
             html += '</ul>';
             document.getElementById('result').innerHTML = html;
         })
-        .catch(error => console.log(error) )і
+        .catch(error => console.log(error) )
 }
