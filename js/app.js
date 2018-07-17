@@ -22,19 +22,25 @@ function loadNames(e) {
     if (amount !== '') {
         url += `amount=${amount}&`;
     }
-    fetch(url)
-        .then(response =>  response.json() )
+    getNames(url)
         .then(names => {
-            let html = '';
-            html = '<h2>Згенеровані імена:</h2>';
+            let namesResponse = names.names;
+            let html = '<h2>Згенеровані імена:</h2>';
             html += '<ul class="list">';
-            names.forEach(name => {
+            for (let name of namesResponse){
                 html += `
                     <li>${name.name}</li>
                 `;
-            });
+            }
             html += '</ul>';
             document.getElementById('result').innerHTML = html;
         })
         .catch(error => console.log(error) )
+}
+async function getNames(url){
+    const response = await fetch(url)
+    const names = await response.json() 
+    return{
+        names
+    }
 }
